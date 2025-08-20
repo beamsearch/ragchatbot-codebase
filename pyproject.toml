@@ -87,3 +87,17 @@ warn_no_return = true
 warn_unreachable = true
 strict_equality = true
 exclude = ["build", "dist", ".venv"]
+
+# 1) Define the named index (array-of-tables)
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true   # recommended so only packages you point to use this index
+
+# 2) Point PyTorch packages at that index
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+torchaudio = { index = "pytorch-cpu" }
+
+
